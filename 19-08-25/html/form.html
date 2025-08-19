@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container" style=" background-color: rgb(240, 237, 237);  margin-bottom: 10px; margin-top: 30px; width: 500px;height: 700px;  border: 1px solid black;">
+        <h3 style="text-align: center;">Registration Form</h3>
+        <form>
+        
+            <div class="form-group col-sm-6" >
+            <label  >First Name</label>
+            <input  type="text"  class="form-control" name="firstname">
+            
+        </div>
+        <div class="form-group col-sm-6">
+            <label >Last Name</label>
+            <input type="text"  class="form-control" name="lastname">
+
+        </div>
+        <div class="form-group  col-sm-12">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" >
+
+        </div>
+        <div class="form-group col-sm-12">
+            <label>password</label>
+            <input type="password" class="form-control" name="password">
+
+        </div>
+        <div class="form-group form-inline col-sm-12" >
+            <label>Gender</label><br>
+            <label class="radio-inline" >
+
+                <input type="radio"  name="Gender" value="Male">Male
+            </label>
+            <label class="radio-inline" >
+                <input type="radio"  name="Gender" value="Female">Female
+
+            </label>
+    
+
+        </div>
+        <div class="form-group col-sm-12" >
+            <label>City</label><br>
+            <select name="city" style="width: 150px; text-align: center;">
+            <option>Surat</option>
+            <option>bardoli</option>
+            </select>
+
+        </div>
+        <div class="form-group col-sm-12">
+
+            <input type="checkbox" name="agree"> i agree terms and condition 
+            <br>
+    
+            <input type="checkbox" name="agree"> Suscribe to newletter
+        </div>
+
+        <div class="form-group col-sm-12">
+
+            <label>Date</label>
+            <input type="date" name="date">
+        </div>
+        
+        <div class="form-group col-sm-12">
+
+            <label>addres</label>
+    
+            <textarea class="form-control"  rows="2" cols="20"></textarea>
+            <br><br>
+            <input  type="submit" name="submit"  value="Submit">
+        </div>
+
+
+
+            
+        </form>
+    </div>
+</body>
+</html>
