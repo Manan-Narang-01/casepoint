@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+</head>
+<body>
+    <h4>Date</h4>
+    <button type="button" onclick="document.getElementById('demo').innerHTML=Date()">Click Me</button>
+    <p id="demo"></p>
+    <br><br>
+    <h4>Text Change</h4>
+    <button type="button" onclick="document.getElementById('demo1').innerHTML='Text Changed'">Click Me!</button>
+    <p id="demo1">Text Not Changed</p>
+    <br><br>
+    <h4>Bulb</h4>
+
+    <input type="button" value="On" onclick="document.getElementById('myimage').src='on.png'">
+    <img src="on.png" id="myimage" style="width: 100px;">
+    <input type="button" value="Off" onclick="document.getElementById('myimage').src='off.png'">
+    <br><br>
+    <h4>Change Css</h4>
+    <p id="demo2">Hello JavaScript</p>
+    <button type="button"  onclick="document.getElementById('demo2').style.fontSize='32px'">Click</button>  
+    <button type="button" style="background-color: red;"  onclick="styling()">Click</button> 
+    <script>
+        function styling() {
+            var t=document.getElementById("demo2")
+            t.style.backgroundColor='blue'
+            t.style.color='red'
+            t.style.fontFamily='Arial'
+            t.style.fontSize='21px'
+
+        }
+        
+    </script> 
+
+    
+    <h4>Hide Html Element</h4>
+    <p id="demo3">Hello Java</p>
+    <button type="button"  onclick="document.getElementById('demo3').style.display='none'">Click</button>  
+    <button type="button" style="background-color: red;"  onclick="Hiding()">Click</button> 
+    <script>
+        function Hiding(){
+            var e=document.getElementById('demo3')
+            if(e.style.display==='none'){
+                e.style.display='block'
+            }
+            else{
+                e.style.display='none'
+            }
+        }
+    </script> 
+
+    <br><br>
+    <h4>sum using document write</h4>
+    <script>document.write(5+6);</script>
+
+    
+    <br><br>
+    <h4>sum using alert</h4>
+    <script>window.alert(5+6);</script>
+
+    
+    <br><br>
+    <h4>sum using console log </h4>
+    <script>console.log(5+6);</script>
+
+    <h4>JavaScript Function</h4>
+    <p id="demo4">Hello Java</p>
+    <script>
+        function myf(p1,p2){
+            return p1+p2
+
+        }
+        document.getElementById('demo4').innerHTML=myf(2,1)
+    </script>
+
+
+
+    <h4 onmouseover="style.color='red'" onmouseout="style.color='black'">Mouse over this</h4>
+
+    <input type="text" onkeydown="style.backgroundColor='yellow'" onkeypress="style.backgroundColor='red'"  onkeyup="style.backgroundColor='white'">
+
+
+
+</body>
+</html>
