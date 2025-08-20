@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container" style="width: 500px;border: 1px solid black;margin-top: 30px;height: 1000px; margin-bottom: 30px;background-color: rgb(231, 229, 229);">
+        <h3 style="text-align: center;">Sign up</h3>
+
+        <form onsubmit="return Validation()">
+            <div class="form-group">
+                <label>Name :</label>
+                <input type="text" name="username" id="username" oninput="validateuser()" class="form-control" placeholder="Enter Username">
+                <span id="NameErr" style="color: red;"></span><br><br>
+            </div>
+    
+            <div class="form-group">
+                <label>Gender</label>
+                <div class="radio-inline">
+                    <input type="radio" id="GenderMale" value="Male" onchange="validategender()" name="Gender">Male
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" id="GenderFemale" value="Female" name="Gender">Female
+                </div><br><br>
+                <span id="genderErr" style="color: red;"></span>
+            </div>
+            
+            <div class="form-group">
+                <label>Date</label>
+                <input type="date" id="dob" onchange="validatedob()" class="form-control" name="dob">
+                <span id="dobErr" style="color: red;"></span><br><br>
+            </div>
+            
+            <div class="form-group">
+                <label>Country:</label>
+                <select id="country" onchange="validatecountry()">
+                    <option value="Us">US</option>
+                    <option value="Uk">UK</option>
+                    <option value="India">India</option>
+                </select>
+                <span id="countryErr" style="color: red;"></span><br><br>
+            </div>
+
+            <div class="form-group">
+                <label>Mobile No:</label>
+                <input type="number" name="mobileno" class="form-control" oninput="validatemobileno()" id="mobileno" placeholder="Enter Mobile No">
+                <span id="mobilenoErr" style="color: red;"></span><br><br>
+            </div>
+            
+            <div class="form-group">
+                <label>Email Id :</label>
+                <input type="email" name="email" class="form-control" oninput="validateemail()" id="email" placeholder="Enter Email Id">
+                <span id="emailErr" style="color: red;"></span><br><br>
+            </div>
+            
+            <div class="form-group">
+                <label>Password :</label>
+                <input type="password" name="password" class="form-control" oninput="validatepwd()" id="password" placeholder="Enter Password">
+                <span id="pwdErr" style="color: red;"></span><br><br>
+            </div>
+            
+            <div class="form-group">
+                <label>Confirm Password :</label>
+                <input type="password" name="cpassword" class="form-control" oninput="validatecpwd()" id="cpassword" placeholder="Enter Confirm Password">
+                <span id="cpwdErr" style="color: red;"></span>
+            </div>
+            
+            <div class="form-group">
+                <div class="checkbox-inline">
+                    <input type="checkbox" name="agree" onchange="validateterms()" id="agree"> Agree to terms and conditions
+                    <span id="agreeErr" style="color: red;"></span>
+                </div>
+            </div>
+            
+            <br><br>
+            <div style="text-align: center;">
+                <button type="submit">Submit</button>
+            </div>
+            <br>
+            <div style="text-align: center;">
+                <a href="login.html">Go To Login Page</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function validateuser(){
+            const username = document.getElementById("username").value.trim();
+            const NameErr = document.getElementById("NameErr");
+            const np = /^[a-zA-Z]+$/;
+            if (!username) {
+                NameErr.textContent = 'Please enter a username.';
+                return false;
+            } else if (!np.test(username)) {
+                NameErr.textContent = 'Please enter a valid username.';
+                return false;
+            } else {
+                NameErr.textContent = '';
+                return true;
+            }
+        }
+
+        function validategender() {
+            const genderMale = document.getElementById("GenderMale");
+            const genderFemale = document.getElementById("GenderFemale");
+            const genderErr = document.getElementById("genderErr");
+            if (!genderMale.checked && !genderFemale.checked) {
+                genderErr.textContent = 'Please select a gender.';
+                return false;
+            } else {
+                genderErr.textContent = '';
+                return true;
+            }
+        }
+
+        function validatedob() {
+            const dob = document.getElementById("dob").value.trim();
+            const dobErr = document.getElementById("dobErr");
+            if (!dob) {
+                dobErr.textContent = 'Please select a date of birth.';
+                return false;
+            } else {
+                dobErr.textContent = '';
+                return true;
+            }
+        }
+
+        function validatecountry() {
+            const country = document.getElementById("country").value.trim();
+            const countryErr = document.getElementById("countryErr");
+            if (!country) {
+                countryErr.textContent = 'Please select a country.';
+                return false;
+            } else {
+                countryErr.textContent = '';
+                return true;
+            }
+        }
+
+        function validatemobileno() {
+            const mobileno = document.getElementById("mobileno").value.trim();
+            const mobilenoErr = document.getElementById("mobilenoErr");
+            if (!mobileno) {
+                mobilenoErr.textContent = 'Please enter a mobile number.';
+                return false;
+            } else if (mobileno.length != 10) {
+                mobilenoErr.textContent = 'Mobile number must be 10 digits.';
+                return false;
+            } else {
+                mobilenoErr.textContent = '';
+                return true;
+            }
+        }
+
+        function validateemail() {
+            const email = document.getElementById("email").value.trim();
+            const emailErr = document.getElementById("emailErr");
+            const ep = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if (!email) {
+                emailErr.textContent = 'Please enter an email address.';
+                return false;
+            } else if (!ep.test(email)) {
+                emailErr.textContent = 'Please enter a valid email address.';
+                return false;
+            } else {
+                emailErr.textContent = '';
+                return true;
+            }
+        }
+
+        function validatepwd() {
+            const pwd = document.getElementById("password").value.trim();
+            const pwdErr = document.getElementById("pwdErr");
+            if (!pwd) {
+                pwdErr.textContent = 'Please enter a password.';
+                return false;
+            }  else if (pwd.length < 6) {
+                pwdErr.textContent = 'Password must be at least 6 characters.';
+                return false;
+            }  else {
+                pwdErr.textContent = '';
+                return true;
+            }
+        }
+        
+        function validatecpwd(){
+            const pwd = document.getElementById("password").value.trim();
+            const cpwd = document.getElementById("cpassword").value.trim();
+            const cpwdErr = document.getElementById("cpwdErr");
+            if (!cpwd) {
+                cpwdErr.textContent = 'Please confirm your password.';
+                return false;
+            }
+            else if (pwd !== cpwd) {
+                cpwdErr.textContent = 'Passwords do not match.';
+                
+                return false;
+            }
+            else {
+                cpwdErr.textContent='';
+                return true
+            }
+        }
+
+        function validateterms() {
+            const agree = document.getElementById("agree");
+            const agreeErr = document.getElementById("agreeErr");
+            if (!agree.checked) {
+                agreeErr.textContent = 'You must agree to the terms and conditions.';
+                return false;
+            } else {
+                agreeErr.textContent = '';
+                return true;
+            }
+        }
+
+        function Validation() {
+            const isValidUser = validateuser();
+            const isValidGender = validategender();
+            const isValidDOB = validatedob();
+            const isValidCountry = validatecountry();
+            const isValidMobile = validatemobileno();
+            const isValidEmail = validateemail();
+            const isValidPwd = validatepwd();
+            const isValidTerms = validateterms();
+            const isValidCpwd = validatecpwd();
+
+
+            
+            if( isValidUser && isValidGender && isValidDOB && isValidCountry && isValidMobile && isValidEmail && isValidPwd && isValidTerms && isValidCpwd){
+                return true;
+
+            }
+            else{
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>

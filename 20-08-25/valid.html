@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myform"   onsubmit="return Validation()">
+        <label>Username :</label>
+        <input type="text" name="username" id="username" placeholder="Enter Username">
+        <br>
+        <br>
+        <label>Email Id :</label>
+        <input type="email" name="email " id="email" placeholder="Enter Email Id">
+        <br>
+        <br>
+        
+        <br><br>
+        <!-- <button type="button" onclick="Validation()">Submit</button> -->
+         <button type="submit">Submit</button>
+        
+    </form>
+    <p id="error" style="color: red;"></p>
+    <script>
+        function Validation(){
+
+            const username=document.getElementById("username").value.trim();
+            const email=document.getElementById("email").value.trim();
+            const error=document.getElementById("error");
+            if(!username || !email){
+                error.textContent='please enter all the fields';
+                return false;
+            }
+
+            const np=/^[a-zA-Z]+$/;
+            if(!np.test(username)){
+                error.textContent='please enter valid user name';
+                return false;
+
+            }
+
+            const ep=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            if(!ep.test(email)){
+                error.textContent='please enter valid email address';
+                return false;
+                
+            }
+            error.textContent="";
+            alert("form submitted");
+            return true;
+
+        }
+    </script>
+</body>
+</html>
