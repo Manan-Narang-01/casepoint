@@ -94,17 +94,17 @@
 
     <div class="container">
         <h3>Login Page</h3>
-        <form id="loginform" onsubmit="return Validation()">
+        <form id="loginform" >
             <div class="form-group">
                 <label for="email">Email Id :</label>
                 <input type="email" name="email" id="email" oninput="validateemail()" class="form-control" placeholder="Enter Email Id">
-                <span id="emailErr" style="color: red;"></span>
+                <span id="emailErr" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label for="password">Password :</label>
                 <input type="password" name="password" id="password" onmouseover="this.type='text'" onmouseout="this.type='password'" class="form-control" oninput="validatepwd()" placeholder="Enter Password">
-                <span id="pwdErr" style="color: red;"></span><br>
+                <span id="pwdErr" class="text-danger"></span><br>
             </div>
             
             <div class="text-center">
@@ -118,70 +118,6 @@
         </form>
     </div>
 
-    <script>
-        $(document).ready(function(){
-
-            $('#email').on('input',validateEmail);
-            $('#password').on('input',validatePwd);
-        
-            function validateEmail(){
-                const $email=$('#email').val().trim();
-                const $emailpattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-                if($email==''||$email==null){
-                    $("#emailErr").html("please enter email id");
-                    return false;
-                
-                }else if(!$emailpattern.test($email)){
-                    $("#emailErr").html("please enter the valid email id")
-                    return false;
-                }
-                else{
-                    $("#emailErr").html("")
-                    return true;
-        
-                }
-            }
-        
-            function validatePwd(){
-                const $pwd=$('#password').val().trim();
-                
-                if($pwd==''||$pwd==null){
-                    $("#pwdErr").html("please enter password");
-                    return false;
-                
-                }else if($pwd.length<6){
-                    $("#pwdErr").html("password must be 6 characters")
-                    return false;
-                }
-                else{
-                    $("#pwdErr").html("");
-                    return true;
-        
-        
-                }
-            }
-        
-             $("#loginform").on('submit',function(e){
-            
-                    e.preventDefault();
-                    const $isValidEmail = validateEmail();
-                    const $isValidPwd = validatePwd();
-        
-        
-        
-                    
-                    if(   $isValidEmail && $isValidPwd ){
-                        return true;
-        
-                    }
-                    else{
-                        return false;
-                    }
-                    
-                    
-                })
-            
-        })
-    </script>
+    <script src="../js/jqueryloginvalidation.js"></script>
 </body>
 </html>

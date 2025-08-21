@@ -8,6 +8,8 @@ $(document).ready(function(){
     $('#password').on('input',validatePwd);
     $('#cpassword').on('input',validateCpwd);
     $('#agree').on('change',validateTerms);
+
+    $("#dobErr").hide();
     
     
     function validateName(){
@@ -82,12 +84,12 @@ $(document).ready(function(){
     function validateDob(){
         const $dob=$('#dob').val().trim();
         if(!$dob){
-            $("#dobErr").html("please select date of birth");
+            $("#dobErr").show();
             return false;
         
         }
         else{
-            $("#dobErr").html("");
+            $("#dobErr").hide("");
             return true;
 
 

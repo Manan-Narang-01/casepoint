@@ -3,17 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    
+    <title>Sign Up</title>
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-     <script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
-    </script>   
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
     <style>
         body {
@@ -22,13 +18,12 @@
         }
 
         .container {
-            width: 500px;
+            max-width: 500px;
             border: 1px solid #ddd;
             margin-top: 30px;
-            height: auto;
             margin-bottom: 30px;
             background-color: #fff;
-            padding: 20px;
+            padding: 30px;
             border-radius: 8px;
         }
 
@@ -58,16 +53,8 @@
             border: 1px solid #ccc;
         }
 
-        input[type="radio"] {
-            margin-right: 5px;
-        }
-
         .radio-inline {
             margin-right: 15px;
-        }
-
-        .checkbox-inline {
-            margin-top: 10px;
         }
 
         button {
@@ -85,11 +72,6 @@
             background-color: #0056b3;
         }
 
-        .form-group span {
-            font-size: 14px;
-            display: block;
-        }
-
         .text-center a {
             font-size: 14px;
             color: #007bff;
@@ -102,78 +84,82 @@
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h3>Sign up</h3>
-        <form id="signupform" action="login.html" >
+        <h3>Sign Up</h3>
+        <form id="signupform" action="login.html" method="post">
             <div class="form-group">
-                <label for="username">Name :</label>
-                <input type="text" name="username" id="username"  placeholder="Enter Username">
-                <span id="NameErr" style="color: red;"></span>
+                <label for="username">Name:</label>
+                <input type="text" name="username" id="username" class="form-control" placeholder="Enter Username">
+                <span id="NameErr" class="text-danger"></span>
             </div>
-    
+
             <div class="form-group">
                 <label>Gender</label>
                 <div class="radio-inline">
-                    <input type="radio" id="GenderMale" value="Male"  name="Gender">Male
+                    <input type="radio" id="GenderMale" value="Male" name="Gender"> Male
                 </div>
                 <div class="radio-inline">
-                    <input type="radio" id="GenderFemale" value="Female" name="Gender">Female
-                </div><br>
-                <span id="genderErr" style="color: red;"></span>
+                    <input type="radio" id="GenderFemale" value="Female" name="Gender"> Female
+                </div>
+                <br>
+                <span id="genderErr" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <label for="dob">Date of Birth:</label>
-                <input type="date" id="dob"  min="1970-01-01" max="2025-12-21" name="dob">
-                <span id="dobErr" style="color: red;"></span>
+                <input type="date" id="dob" class="form-control" min="1970-01-01" max="2025-12-21" name="dob">
+                <span id="dobErr" class="text-danger">Please enter your date of birth</span>
             </div>
-            
+
             <div class="form-group">
                 <label for="country">Country:</label>
-                <select id="country" >
+                <select id="country" class="form-control">
                     <option value="Country">Select Your Country</option>
                     <option value="Us">US</option>
                     <option value="Uk">UK</option>
                     <option value="India">India</option>
                 </select>
-                <span id="countryErr" style="color: red;"> </span>
+                <span id="countryErr" class="text-danger"></span>
             </div>
 
             <div class="form-group">
                 <label for="mobileno">Mobile No:</label>
-                <input type="number" name="mobileno" id="mobileno" placeholder="Enter Mobile No">
-                <span id="mobilenoErr" style="color: red;"></span>
+                <input type="number" name="mobileno" id="mobileno" class="form-control" placeholder="Enter Mobile No">
+                <span id="mobilenoErr" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
-                <label for="email">Email Id :</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email Id">
-                <span id="emailErr" style="color: red;"></span>
+                <label for="email">Email Id:</label>
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email Id">
+                <span id="emailErr" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
-                <label for="password">Password :</label>
-                <input type="password" name="password" id="password" onmouseover="this.type='text'" onmouseout="this.type='password'" placeholder="Enter Password">
-                <span id="pwdErr" style="color: red;"></span>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" class="form-control" onmouseover="this.type='text'" onmouseout="this.type='password'" placeholder="Enter Password">
+                <span id="pwdErr" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
-                <label for="cpassword">Confirm Password :</label>
-                <input type="password" name="cpassword" id="cpassword" onmouseover="this.type='text'" onmouseout="this.type='password'" placeholder="Enter Confirm Password">
-                <span id="cpwdErr" style="color: red;"></span>
+                <label for="cpassword">Confirm Password:</label>
+                <input type="password" name="cpassword" id="cpassword" class="form-control" onmouseover="this.type='text'" onmouseout="this.type='password'" placeholder="Enter Confirm Password">
+                <span id="cpwdErr" class="text-danger"></span>
             </div>
-            
+
             <div class="form-group">
                 <div class="checkbox-inline">
-                    <input type="checkbox" name="agree" id="agree" > Agree to terms and conditions
-                    <span id="agreeErr" style="color: red;"></span>
+                    <input type="checkbox" name="agree" id="agree"> Agree to terms and conditions
+                    <span id="agreeErr" class="text-danger"></span>
                 </div>
             </div>
-            
+
             <div class="text-center">
-                <button id="submit" type="submit">Submit</button>
+                <button id="submit" type="submit" class="btn btn-primary">Submit</button>
             </div>
+
             <br>
+
             <div class="text-center">
                 <a href="login2.html">Go To Login Page</a>
             </div>
