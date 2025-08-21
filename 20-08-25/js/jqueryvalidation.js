@@ -16,11 +16,11 @@ $(document).ready(function(){
         const $name=$('#username').val().trim();
         const $namepattern=/^[a-zA-Z]+$/;
         if($name=='' || $name==null){
-            $("#NameErr").html("please enter the name")
+            $("#NameErr").html("please enter the Name")
             return false;
 
         }else if(!$namepattern.test($name)){
-            $("#NameErr").html("please enter the valid name")
+            $("#NameErr").html("please enter the Valid Name")
             return false;
         }
         else{
@@ -33,11 +33,11 @@ $(document).ready(function(){
     function validateMobileno(){
         const $mobileno=$('#mobileno').val().trim();
         if($mobileno=='' || $mobileno==null){
-            $("#mobilenoErr").html("please enter the mobile no");
+            $("#mobilenoErr").html("please enter the Mobile No");
             return false;
 
         }else if($mobileno.length != 10){
-            $("#mobilenoErr").html("mobile no should be 10 digits");
+            $("#mobilenoErr").html("Mobile No should be 10 digits");
             return false;
         }
         else{
@@ -51,11 +51,11 @@ $(document).ready(function(){
         const $email=$('#email').val().trim();
         const $emailpattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
         if($email==''||$email==null){
-            $("#emailErr").html("please enter email ids");
+            $("#emailErr").html("please enter Email id");
             return false;
         
         }else if(!$emailpattern.test($email)){
-            $("#emailErr").html("please enter the valid email id")
+            $("#emailErr").html("please enter the valid Email id")
             return false;
         }
         else{
@@ -70,7 +70,7 @@ $(document).ready(function(){
         const $genderFemale=$('#GenderFemale');
         if(!$genderMale.checked && !$genderFemale.checked){
 
-            $('#genderErr').html("please select the genders");
+            $('#genderErr').html("please select the Gender");
             return false;
         }
 
@@ -103,11 +103,11 @@ $(document).ready(function(){
         const $pwd=$('#password').val().trim();
         
         if($pwd==''||$pwd==null){
-            $("#pwdErr").html("please enter password");
+            $("#pwdErr").html("please enter Password");
             return false;
         
         }else if($pwd.length<6){
-            $("#pwdErr").html("password must be 6 characters")
+            $("#pwdErr").html("Password must be 6 Characters")
             return false;
         }
         else{
@@ -122,11 +122,11 @@ $(document).ready(function(){
         const $cpwd=$('#cpassword').val().trim();
         
         if($cpwd==''||$cpwd==null){
-            $("#cpwdErr").html("please enter password");
+            $("#cpwdErr").html("please enter Confirm Password");
             return false;
         
         }else if($pwd!=$cpwd){
-            $("#cpwdErr").html("password must be same");
+            $("#cpwdErr").html("Password must be same");
             return false;
         }
         else{
@@ -140,7 +140,7 @@ $(document).ready(function(){
     function validateTerms(){
         const $terms=$('#agree');
         if(!$terms.checked){
-            $('#agreeErr').html("please select the genders");
+            $('#agreeErr').html("please tick the Checkbox");
             return false;
         }
 
@@ -154,7 +154,7 @@ $(document).ready(function(){
     function validateCountry() {
             const $country = document.getElementById("country").value.trim();
             if ($country=='Country') {
-            $('#countryErr').html("please select the country");
+            $('#countryErr').html("please select the Country");
                 return false;
             } else {
             $('#countryErr').html("");

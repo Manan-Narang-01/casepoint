@@ -6,11 +6,11 @@ $(document).ready(function(){
                 const $email=$('#email').val().trim();
                 const $emailpattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 if($email==''||$email==null){
-                    $("#emailErr").html("please enter email id");
+                    $("#emailErr").html("please enter Email Id");
                     return false;
                 
                 }else if(!$emailpattern.test($email)){
-                    $("#emailErr").html("please enter the valid email id")
+                    $("#emailErr").html("please enter the valid Email Id")
                     return false;
                 }
                 else{
@@ -24,12 +24,9 @@ $(document).ready(function(){
                 const $pwd=$('#password').val().trim();
                 
                 if($pwd==''||$pwd==null){
-                    $("#pwdErr").html("please enter password");
+                    $("#pwdErr").html("please enter Password");
                     return false;
                 
-                }else if($pwd.length<6){
-                    $("#pwdErr").html("password must be 6 characters")
-                    return false;
                 }
                 else{
                     $("#pwdErr").html("");

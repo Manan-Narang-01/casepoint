@@ -94,7 +94,7 @@
 
     <div class="container">
         <h3>Login Page</h3>
-        <form id="loginform" >
+        <form id="loginform" onsubmit="return Validation()">
             <div class="form-group">
                 <label for="email">Email Id :</label>
                 <input type="email" name="email" id="email" oninput="validateemail()" class="form-control" placeholder="Enter Email Id">
