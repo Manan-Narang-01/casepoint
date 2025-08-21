@@ -41,7 +41,7 @@ $(document).ready(function(){
                     const $isValidEmail = validateEmail();
                     const $isValidPwd = validatePwd();
                     if(   $isValidEmail && $isValidPwd ){
-                        return true;
+                        HTMLFormElement.prototype.submit.call(this);
                     }
                     else{
                         return false;

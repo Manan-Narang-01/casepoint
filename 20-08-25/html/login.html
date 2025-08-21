@@ -93,7 +93,7 @@
         <form onsubmit="return Validation()">
             <div class="form-group">
                 <label for="email">Email Id :</label>
-                <input type="email" name="email" id="email" oninput="validateemail()" class="form-control" placeholder="Enter Email Id">
+                <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email Id">
                 <span id="emailErr" style="color: red;"></span>
             </div>
             
@@ -109,7 +109,7 @@
 
             <br>
             <div class="text-center">
-                <a href="signup.html">Go To Sign Up Page</a>
+                <a href="signup2.html">Go To Sign Up Page</a>
             </div>
         </form>
     </div>
@@ -157,10 +157,6 @@
         function Validation() {
             const isValidEmail = validateemail();
             const isValidPwd = validatepwd();
-          
-
-
-            
             if( isValidEmail && isValidPwd ){
                 return true;
 
