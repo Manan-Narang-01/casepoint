@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    </script>   
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+        }
+
+        .container {
+            width: 500px;
+            border: 1px solid #ddd;
+            margin-top: 100px;
+            margin-bottom: 30px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .container h3 {
+            text-align: center;
+            background-color: #007bff;
+            color: white;
+            padding: 10px 0;
+            margin: 0;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-group span {
+            font-size: 14px;
+            display: block;
+        }
+
+        .text-center a {
+            font-size: 14px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .text-center a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h3>Login Page</h3>
+        <form id="loginform" onsubmit="return Validation()">
+            <div class="form-group">
+                <label for="email">Email Id :</label>
+                <input type="email" name="email" id="email" oninput="validateemail()" class="form-control" placeholder="Enter Email Id">
+                <span id="emailErr" style="color: red;"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password :</label>
+                <input type="password" name="password" id="password" onmouseover="this.type='text'" onmouseout="this.type='password'" class="form-control" oninput="validatepwd()" placeholder="Enter Password">
+                <span id="pwdErr" style="color: red;"></span><br>
+            </div>
+            
+            <div class="text-center">
+                <button type="submit">Submit</button>
+            </div>
+
+            <br>
+            <div class="text-center">
+                <a href="signup2.html">Go To Sign Up Page</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        $(document).ready(function(){
+
+            $('#email').on('input',validateEmail);
+            $('#password').on('input',validatePwd);
+        
+            function validateEmail(){
+                const $email=$('#email').val().trim();
+                const $emailpattern=/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                if($email==''||$email==null){
+                    $("#emailErr").html("please enter email id");
+                    return false;
+                
+                }else if(!$emailpattern.test($email)){
+                    $("#emailErr").html("please enter the valid email id")
+                    return false;
+                }
+                else{
+                    $("#emailErr").html("")
+                    return true;
+        
+                }
+            }
+        
+            function validatePwd(){
+                const $pwd=$('#password').val().trim();
+                
+                if($pwd==''||$pwd==null){
+                    $("#pwdErr").html("please enter password");
+                    return false;
+                
+                }else if($pwd.length<6){
+                    $("#pwdErr").html("password must be 6 characters")
+                    return false;
+                }
+                else{
+                    $("#pwdErr").html("");
+                    return true;
+        
+        
+                }
+            }
+        
+             $("#loginform").on('submit',function(e){
+            
+                    e.preventDefault();
+                    const $isValidEmail = validateEmail();
+                    const $isValidPwd = validatePwd();
+        
+        
+        
+                    
+                    if(   $isValidEmail && $isValidPwd ){
+                        return true;
+        
+                    }
+                    else{
+                        return false;
+                    }
+                    
+                    
+                })
+            
+        })
+    </script>
+</body>
+</html>

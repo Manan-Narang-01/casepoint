@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        $(document).ready(function(){
+            $("p").click(function(){
+                $(this).hide("slow");
+            });
+        });
+
+        $(document).ready(function(){
+            $("#b1").click(function(){
+                $("p").hide(1000)
+            })
+        })
+
+        $(document).ready(function(){
+            $("#b2").click(function(){
+                $("p:eq(1)").toggle(2100)
+            })
+        })
+
+        $(document).ready(function(){
+            $("#b3").click(function(){
+                $("*").hide()
+            })
+        })
+
+        $(document).ready(function(){
+            $('#b4').click(function(){
+                $('ul li:eq(1)').hide()
+            })
+        })
+
+        $(document).ready(function(){
+            $('#b5').click(function(){
+                $('ul li:nth-child(2)').slideToggle("slow")
+            })
+        })
+        
+        $(document).ready(function(){
+            $('#b6').dblclick((function(){
+                $('ul').fadeToggle(1000)
+            }))
+        })
+
+        $(document).ready(function(){
+            $('p').on({
+                mouseenter: function(){
+                    $(this).css("background-color","lightgray");
+                },
+                mouseleave: function(){
+                    $(this).css("background-color","green")
+                },
+                click: function(){
+                    $(this).css("background-color","red")
+                }
+            })
+        })
+
+        $(document).ready(function(){
+            $("#i1").val("manan");
+            $("#b7").click(function(){
+                alert("text: "+$("#i1").val())
+            })
+        })
+
+        $(document).ready(function(){
+            $("#b8").click(function(){
+                $("div").animate({
+                    height: '0px',
+                    width: '0px',
+                    opacity: '0',
+                    left: '100px'
+                })
+            })
+        })
+    </script>
+</head>
+<body>
+    <p>click me</p>
+    <p id="click2">click me 2</p>
+    <p>please click me</p>
+
+    <ul>class
+        <li>first</li>
+        <li>second</li>
+        <li>third</li>
+
+    </ul>
+
+    <ul>Division
+        <li>A</li>
+        <li>B</li>
+        <li>C</li>
+
+    </ul>
+    <div style="background-color: aqua;height: 100px;width: 100px;opacity: 1; position: absolute;"></div><br><br>
+    
+    <input type="hidden" id="i1"  value="varun">
+    <button id="b1" type="button">clear</button><br><br>
+    <button id="b2" type="button">clear p2</button><br><br>
+    <button id="b3" type="button">clear all</button><br><br>
+    <button id="b4" type="button">clear ul 1st element</button><br><br>
+    <button id="b5" type="button">clear all ul's 1st element</button><br><br>
+    <button id="b6" type="button">double click to hide</button><br><br>
+    <button id="b7" type="button">text</button><br><br>
+    <button id="b8" type="button">start animation</button><br><br>
+
+
+
+
+
+
+
+
+</body>
+</html>
