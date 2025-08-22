@@ -59,6 +59,7 @@ const api_url = 'https://dummyjson.com/posts';
                 $("#pid").val(post.id);
                 $("#title").val(post.title);
                 $("#body").val(post.body);
+                
             });
         }
 
