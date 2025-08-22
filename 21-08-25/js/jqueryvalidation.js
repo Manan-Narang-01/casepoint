@@ -14,7 +14,7 @@ $(document).ready(function(){
     
     function validateName(){
         const name=$('#username').val().trim();
-        const namepattern=/^[a-zA-Z]+$/;
+        const namepattern=/^[a-zA-Z]+$/;    
         if(name=='' || name==null){
             $("#NameErr").html("Please enter your name")
             return false;

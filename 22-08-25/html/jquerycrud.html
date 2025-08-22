@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery CRUD Operation</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-section {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-right: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button#updatebutton {
+            background-color: #007bff;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        table {
+            width: 90%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #343a40;
+            color: white;
+        }
+
+        td button {
+            background-color: #ffc107;
+            color: black;
+            margin-right: 5px;
+        }
+
+        #delete {
+            background-color: #dc3545;
+            color: white;
+        }
+
+        #edit {
+            background-color: #007bff;
+            color: white;
+        }
+
+        @media (max-width: 600px) {
+            .form-section, table {
+                width: 95%;
+            }
+
+            td, th {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2>jQuery CRUD Operation</h2>
+
+    <div class="form-section">
+        <form>
+            <input type="hidden" id="pid">
+            <input type="text" id="title" placeholder="Enter title">
+            <input type="text" id="body" placeholder="Enter body">
+            <button type="button" id="createbutton">Create</button>
+            <button type="button" id="updatebutton" disabled>Update</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Body</th>
+                <th>Title</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="postTable"></tbody>
+    </table>
+
+    <script>
+        const api_url = 'https://dummyjson.com/posts';
+
+        function loadpost() {
+            $.get(api_url, function (data) {
+                $("#postTable").empty();
+                data.posts.forEach(post => {
+                    $("#postTable").append(`
+                        <tr>
+                            <td>${post.id}</td>
+                            <td>${post.body}</td>
+                            <td>${post.title}</td>
+                            <td><button id="edit" onclick="editPost(${post.id})">Edit</button></td>
+                            <td><button id="delete" onclick="deletePost(${post.id})">Delete</button></td>
+                        </tr>
+                    `);
+                });
+            });
+        }
+
+        $("#createbutton").click(function () {
+            const title = $("#title").val();
+            const body = $("#body").val();
+
+            $.ajax({
+                url: api_url + "/add",
+                type: "POST",
+                data: JSON.stringify({ title, body, userId: 1 }),
+                contentType: "application/json; charset=UTF-8",
+                success: function (newpost) {
+                    alert("Created Post Id: " + newpost.id);
+                    loadpost();
+                    $("#title,#body").val("");
+                }
+            });
+        });
+
+        function editPost(id) {
+            $.get(api_url + "/" + id, function (post) {
+                $("#pid").val(post.id);
+                $("#title").val(post.title);
+                $("#body").val(post.body);
+                $("#createbutton").prop("disabled", true);
+                $("#updatebutton").prop("disabled", false);
+            });
+        }
+
+        $("#updatebutton").click(function () {
+            const title = $("#title").val();
+            const body = $("#body").val();
+            const id = $("#pid").val();
+
+            $.ajax({
+                url: api_url + "/" + id,
+                type: "PUT",
+                data: JSON.stringify({ title, body }),
+                contentType: "application/json; charset=UTF-8",
+                success: function (updatepost) {
+                    alert("Updated Post Id: " + updatepost.id);
+                    loadpost();
+                    $("#title,#body,#pid").val("");
+                    $("#createbutton").prop("disabled", false);
+                    $("#updatebutton").prop("disabled", true);
+                }
+            });
+        });
+
+        function deletePost(id) {
+            $.ajax({
+                url: api_url + "/" + id,
+                type: "DELETE",
+                success: function () {
+                    alert("Deleted Post ID: " + id);
+                    loadpost();
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            loadpost();
+        });
+    </script>
+</body>
+</html>
