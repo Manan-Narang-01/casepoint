@@ -75,10 +75,25 @@ $(document).ready(function () {
                 notEqual: "Please select a valid country"
             }
         },
+
+         errorPlacement: function (error, element) {
+            if (element.attr("name") == "Gender") {
+                error.insertAfter("#genderErr");  
+            } else if (element.attr("name") == "agree") {
+                error.insertAfter(element.next());  
+            } else {
+                error.insertAfter(element); 
+            }
+        },
+
         submitHandler: function (form) {
             form.submit();
         }
     });
+
+    
+
+    
 
     
     $.validator.addMethod("notEqual", function (value, element, param) {

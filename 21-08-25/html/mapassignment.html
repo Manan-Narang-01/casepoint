@@ -1,65 +1,123 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Transform Values with Map</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    select { margin: 5px; }
-    .container { margin-bottom: 30px; }
-    .box { display: inline-block; width: 100px; vertical-align: top; }
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      padding: 40px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    select {
+      width: 120px;
+      height: 120px;
+      padding: 5px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: white;
+    }
+
+    #operation {
+      height: auto;
+      width: 150px;
+    }
   </style>
 </head>
 <body>
+
+  <h2>Transform Values with Map</h2>
+
   <div class="container">
-    <h3>Transform Values with Map</h3>
-    <div class="box">
-      <p>Numbers</p>
-      <ul id="numList2">
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-        <li>5</li>
-        <li>6</li>
-      </ul>
-    </div>
-    
-    <div class="box">
-      <p>Operation</p>
-      <select id="operation2" onchange="applyOperation2()">
-        <option value="square">Square</option>
-        <option value="cube">Cube</option>
-        <option value="quadrant">Quadrant</option>
+    <div class="section">
+      <label for="numbers">Numbers:</label>
+      <select id="numbers" multiple>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="11">11</option>
       </select>
     </div>
-    
-    <div class="box">
-      <p>Result</p>
-      <ul id="result2"></ul>
+
+    <div class="section">
+      <label for="operation">Operation:</label>
+      <select id="operation">
+        <option value="square">Square (x²)</option>
+        <option value="cube">Triple (x³)</option>
+        <option value="quadruple">Quadruple (x×4)</option>
+      </select>
+    </div>
+
+    <div class="section">
+      <label for="result">Result:</label>
+      <select id="result" multiple></select>
     </div>
   </div>
-  
+
   <script>
-    function applyOperation2() {
-      let numbers = [2, 3, 4, 5, 6];
-      let operation = document.getElementById("operation2").value;
-      let result = numbers.map(num => {
-        if (operation === "square") return num * num;
-        if (operation === "cube") return num * num * num;
-        if (operation === "quadrant") return num * num * num * num; 
+    const numberList = document.getElementById("numbers");
+    const operation = document.getElementById("operation");
+    const resultBox = document.getElementById("result");
+
+    function applyMap() {
+      
+      const numbers = Array.from(numberList.options).map(opt => parseInt(opt.value));
+
+      
+      const results = numbers.map(num => {
+        switch (operation.value) {
+          case 'square':
+            return num * num;
+          case 'cube':
+            return num * num * num;
+          case 'quadruple':
+            return num * 4;
+          default:
+            return num;
+        }
       });
 
-      displayResult(result, "result2");
-    }
-
-    function displayResult(arr, elementId) {
-      let ul = document.getElementById(elementId);
-      ul.innerHTML = "";  
-      arr.forEach(val => {
-        let li = document.createElement("li");
-        li.textContent = val;
-        ul.appendChild(li);
+      
+      resultBox.innerHTML = "";
+      results.forEach(res => {
+        const opt = document.createElement("option");
+        opt.textContent = res;
+        resultBox.appendChild(opt);
       });
     }
+
+    
+    operation.addEventListener("change", applyMap);
+
+    
+    window.onload = applyMap;
   </script>
+
 </body>
 </html>
