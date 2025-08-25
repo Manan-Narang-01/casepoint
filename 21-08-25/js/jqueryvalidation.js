@@ -37,7 +37,11 @@ $(document).ready(function(){
             $("#mobilenoErr").html("Please enter your mobile numbe");
             return false;
 
-        }else if(mobileno.length != 10){
+        }else if(mobileno[0] != '6' && mobileno[0] != '7' && mobileno[0] != '8' && mobileno[0] != '9'){
+            $("#mobilenoErr").html("Mobile must starts from either 6,7,8 or 9");
+            return false;
+        }
+        else if(mobileno.length != 10){
             $("#mobilenoErr").html("Mobile No must be exactly 10 digits");
             return false;
         }

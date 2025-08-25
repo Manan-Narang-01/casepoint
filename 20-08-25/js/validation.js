@@ -57,7 +57,12 @@ function validateuser(){
             if (!mobileno) {
                 mobilenoErr.textContent = 'Please enter a mobile number.';
                 return false;
-            } else if (mobileno.length != 10) {
+            }
+            else if(mobileno[0] != '6' && mobileno[0] != '7' && mobileno[0] != '8' && mobileno[0] != '9'){
+                mobilenoErr.textContent="Mobile must starts from either 6,7,8 or 9";
+                return false;
+            } 
+            else if (mobileno.length != 10) {
                 mobilenoErr.textContent = 'Mobile number must be 10 digits.';
                 return false;
             } else {

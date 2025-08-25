@@ -28,6 +28,7 @@ $(document).ready(function () {
                 digits: true,
                 minlength: 10,
                 maxlength: 10,
+                mobileprefix:true
             },
             cpassword: {
                 required: true,
@@ -90,13 +91,11 @@ $(document).ready(function () {
             form.submit();
         }
     });
-
-    
-
-    
-
-    
     $.validator.addMethod("notEqual", function (value, element, param) {
         return this.optional(element) || value !== param;
     }, "Please select a valid option.");
+
+    $.validator.addMethod("mobileprefix",function(value,element){
+        return this.optional(element) || /^[6-9]/.test(value);
+    },"Mobile No must start with 6,7,8 or 9")
 });
