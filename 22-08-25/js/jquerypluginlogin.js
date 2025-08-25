@@ -8,8 +8,7 @@ $(document).ready(function () {
             },
             password: {
                 required: true,
-                minlength: 6,
-                maxlength: 15
+                
             }
         },
         messages: {
@@ -19,8 +18,6 @@ $(document).ready(function () {
             },
             password: {
                 required: "Please enter the password",
-                minlength: "Password must be at least 6 characters",
-                maxlength: "Password must be at most 15 characters"
             }
         },
         submitHandler: function (form) {

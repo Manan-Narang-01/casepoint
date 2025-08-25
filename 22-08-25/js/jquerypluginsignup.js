@@ -26,9 +26,9 @@ $(document).ready(function () {
             mobileno: {
                 required: true,
                 digits: true,
+                mobileprefix:true,
                 minlength: 10,
                 maxlength: 10,
-                mobileprefix:true
             },
             cpassword: {
                 required: true,

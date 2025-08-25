@@ -93,7 +93,7 @@
         <form onsubmit="return Validation()">
             <div class="form-group">
                 <label for="email">Email Id :</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email Id">
+                <input type="email" name="email" id="email" oninput="validateemail()" class="form-control" placeholder="Enter Email Id">
                 <span id="emailErr" style="color: red;"></span>
             </div>
             
