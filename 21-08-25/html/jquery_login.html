@@ -14,9 +14,8 @@
 
     <script
         src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
-    </script>       
+    </script>   
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.21.0/jquery.validate.min.js" integrity="sha512-KFHXdr2oObHKI9w4Hv1XPKc898mE4kgYx58oqsc/JqqdLMDI4YjOLzom+EMlW8HFUd0QfjfAvxSL6sEq/a42fQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -89,11 +88,6 @@
         .text-center a:hover {
             text-decoration: underline;
         }
-
-        .error{
-            color: red;
-        }
-
     </style>
 </head>
 <body>
@@ -103,14 +97,14 @@
         <form id="loginform" >
             <div class="form-group">
                 <label for="email">Email Id :</label>
-                <input type="email" name="email"  id="email"  class="form-control" placeholder="Enter Email Id">
-                
+                <input type="email" name="email" id="email"  class="form-control" placeholder="Enter Email Id">
+                <span id="emailErr" class="text-danger"></span>
             </div>
             
             <div class="form-group">
                 <label for="password">Password :</label>
                 <input type="password" name="password" id="password" onmouseover="this.type='text'" onmouseout="this.type='password'" class="form-control" oninput="validatepwd()" placeholder="Enter Password">
-                
+                <span id="pwdErr" class="text-danger"></span><br>
             </div>
             
             <div class="text-center">
@@ -119,11 +113,11 @@
 
             <br>
             <div class="text-center">
-                <a href="signup2.html">Go To Sign Up Page</a>
+                <a href="jquery_signup.html">Go To Sign Up Page</a>
             </div>
         </form>
     </div>
 
-    <script src="../js/jquerypluginlogin.js"></script>
+    <script src="../js/jqueryloginvalidation.js"></script>
 </body>
 </html>
