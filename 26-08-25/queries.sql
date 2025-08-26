@@ -46,14 +46,78 @@ FROM t_emp e
 FULL OUTER JOIN t_dept d
 ON e.c_deptid=d.c_deptid;
 
---Self join
-SELECT e.c_empid,e.c_name,e1.c_name AS "Manager Name" 
+--Self 
+SELECT e.c_empid,e.c_name,e1.c_mgrno 
 FROM t_emp e
-JOIN t_emp e1	
-ON e.c_mgrno=e1.c_empid;
+JOIN t_emp e1
+ON e.c_empid=e1.c_empid;
+
+CREATE TABLE t_salesman(
+c_cid INT GENERATED ALWAYS AS IDENTITY,
+c_name VARCHAR(50) NOT NULL
+);
+
+--set operatoins
+select c_name from t_emp intersect select c_name from t_salesman; 
+
+select c_name from t_emp UNION select c_name from t_salesman; 
+
+select c_name from t_emp UNION ALL select c_name from t_salesman; 
+
+select c_name from t_emp EXCEPT select c_name from t_salesman; 
 
 
+create table sp(
+id serial primary key,
+data jsonb
+);
 
+insert into sp(data) values
+('{"name":"Alice","age":"25","skills":["c#","SQL","JS"]}'),
+('{"name":"Bob","age":"30","skills":["Python","Django"]}'),
+('{"name":"Charlie","age":"28","skills":["Java","Spring"]}');
+
+
+SELECT * FROM sp;
+
+SELECT id, data->>'name' AS "Name" FROM sp;
+
+SELECT id,(data->>'age')::int as "Age" FROM sp;
+
+SELECT id, data->>'name' AS "Name" FROM sp WHERE ;
+
+SELECT id, data->>'name' AS "Name" FROM sp WHERE data->'skills' @> '["Python"]';
+
+UPDATE sp 
+SET data= jsonb_set(data,'{city}','"New York"')
+WHERE data->>'name'='Alice';
+
+
+UPDATE sp
+SET data=jsonb_set(data,'{age}','26')
+WHERE data->>'name'='Alice';
+
+UPDATE sp
+SET data=data-'CITY'
+WHERE data->>'name'='Alice';
+
+DELETE FROM sp where data->>'name'='Alice';
+
+
+UPDATE sp 
+SET data= jsonb_set(data,'{salary}','10000');
+
+
+UPDATE sp 
+SET data = jsonb_set(
+    data,
+    '{salary}',
+    ((data->>'salary')::numeric * 1.10)::text::jsonb
+);
+
+
+CREATE INDEX idx_json_name ON sp ((data->>'name'));
+CREATE INDEX idx_skills_gin ON sp USING GIN ((data->'skills'));
 
 
 
