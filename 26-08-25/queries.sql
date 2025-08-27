@@ -120,4 +120,108 @@ CREATE INDEX idx_json_name ON sp ((data->>'name'));
 CREATE INDEX idx_skills_gin ON sp USING GIN ((data->'skills'));
 
 
+CREATE TABLE t_accounts(
+c_cid INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_name VARCHAR(50) NOT NULL,
+c_balance DECIMAL(10,2) NOT NULL
+)
+
+INSERT INTO t_accounts(c_name,c_balance) VALUES
+('Manan',100000),
+('Varun',100000),
+('DaBi',100000);
+
+
+CREATE OR REPLACE PROCEDURE transfer(
+    sender INT,
+    receiver INT,
+    amount DECIMAL(10,2)
+)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    sender_balance DECIMAL(10,2);
+BEGIN
+    
+    SELECT c_balance INTO sender_balance
+    FROM t_accounts
+    WHERE c_cid = sender
+    FOR UPDATE;
+	
+	    IF sender_balance < amount THEN
+        RAISE EXCEPTION 'Insufficient funds: Available = %, Required = %', sender_balance, amount;
+    END IF;
+
+    
+    UPDATE t_accounts
+    SET c_balance = c_balance - amount
+    WHERE c_cid = sender;
+
+    
+    UPDATE t_accounts
+    SET c_balance = c_balance + amount
+    WHERE c_cid = receiver;    
+END;
+$$;
+
+
+CALL transfer(3,1,5000000);
+
+
+
+SELECT * FROM t_accounts;
+
+
+CREATE TABLE t_accounts_audits(
+c_aid INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_uid INT NOT NULL ,
+c_u_old DECIMAL(10,2)  NOT NULL,
+c_u_new DECIMAL(10,2)  NOT NULL,
+c_amount DECIMAL(10,2) NOT NULL,
+c_status VARCHAR(50) NOT NULL
+);
+
+DROP TABLE t_accounts_audits;
+
+
+CREATE OR REPLACE FUNCTION log_audits()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	IF NEW.c_balance <> OLD.c_balance THEN
+		IF NEW.c_balance > OLD.c_balance THEN
+			
+			INSERT INTO t_accounts_audits(c_uid,c_u_old,c_u_new,c_amount,c_status) VALUES(NEW.c_cid,OLD.c_balance,NEW.c_balance,NEW.c_balance-OLD.c_balance,'CREDIT');
+		END IF;
+		IF NEW.c_balance < OLD.c_balance THEN
+			
+			INSERT INTO t_accounts_audits(c_uid,c_u_old,c_u_new,c_amount,c_status) VALUES(NEW.c_cid,OLD.c_balance,NEW.c_balance,OLD.c_balance-NEW.c_balance,'DEBIT');
+		END IF;
+	END IF;
+
+	RETURN NEW;
+	
+END;$$
+
+
+
+
+
+
+CREATE OR REPLACE TRIGGER audit
+AFTER UPDATE
+ON t_accounts
+FOR EACH ROW
+EXECUTE FUNCTION log_audits(); 
+
+
+
+select * from t_accounts_audits;
+
+create table t1(like t_accounts);
+insert into t1 
+
+select * from t_accounts;
+create table t2 AS  select * from t_accounts;
 
