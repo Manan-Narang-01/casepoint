@@ -1,0 +1,360 @@
+
+CREATE TABLE t_salesman(
+c_cid INT GENERATED ALWAYS AS IDENTITY,
+c_name VARCHAR(50) NOT NULL
+);
+
+--set operatoins
+select c_name from t_emp intersect select c_name from t_salesman; 
+
+select c_name from t_emp UNION select c_name from t_salesman; 
+
+select c_name from t_emp UNION ALL select c_name from t_salesman; 
+
+select c_name from t_emp EXCEPT select c_name from t_salesman; 
+
+
+create table sp(
+id serial primary key,
+data jsonb
+);
+
+insert into sp(data) values
+('{"name":"Alice","age":"25","skills":["c#","SQL","JS"]}'),
+('{"name":"Bob","age":"30","skills":["Python","Django"]}'),
+('{"name":"Charlie","age":"28","skills":["Java","Spring"]}');
+
+
+SELECT * FROM sp;
+
+SELECT id, data->>'name' AS "Name" FROM sp;
+
+SELECT id,(data->>'age')::int as "Age" FROM sp;
+
+SELECT id, data->>'name' AS "Name" FROM sp WHERE ;
+
+SELECT id, data->>'name' AS "Name" FROM sp WHERE data->'skills' @> '["Python"]';
+
+UPDATE sp 
+SET data= jsonb_set(data,'{city}','"New York"')
+WHERE data->>'name'='Alice';
+
+
+UPDATE sp
+SET data=jsonb_set(data,'{age}','26')
+WHERE data->>'name'='Alice';
+
+UPDATE sp
+SET data=data-'CITY'
+WHERE data->>'name'='Alice';
+
+DELETE FROM sp where data->>'name'='Alice';
+
+
+UPDATE sp 
+SET data= jsonb_set(data,'{salary}','10000');
+
+
+UPDATE sp 
+SET data = jsonb_set(
+    data,
+    '{salary}',
+    ((data->>'salary')::numeric * 1.10)::text::jsonb
+);
+
+
+CREATE INDEX idx_json_name ON sp ((data->>'name'));
+CREATE INDEX idx_skills_gin ON sp USING GIN ((data->'skills'));
+
+
+CREATE TABLE t_accounts(
+c_cid INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_name VARCHAR(50) NOT NULL,
+c_balance DECIMAL(10,2) NOT NULL
+)
+
+INSERT INTO t_accounts(c_name,c_balance) VALUES
+('Manan',100000),
+('Varun',100000),
+('DaBi',100000);
+
+
+CREATE OR REPLACE PROCEDURE transfer(
+    sender INT,
+    receiver INT,
+    amount DECIMAL(10,2)
+)
+LANGUAGE plpgsql
+AS $$
+DECLARE
+    sender_balance DECIMAL(10,2);
+BEGIN
+    
+    SELECT c_balance INTO sender_balance
+    FROM t_accounts
+    WHERE c_cid = sender
+    FOR UPDATE;
+	
+	    IF sender_balance < amount THEN
+        RAISE EXCEPTION 'Insufficient funds: Available = %, Required = %', sender_balance, amount;
+    END IF;
+
+    
+    UPDATE t_accounts
+    SET c_balance = c_balance - amount
+    WHERE c_cid = sender;
+
+    
+    UPDATE t_accounts
+    SET c_balance = c_balance + amount
+    WHERE c_cid = receiver;    
+END;
+$$;
+
+
+CALL transfer(3,1,5000000);
+
+
+
+SELECT * FROM t_accounts;
+
+
+CREATE TABLE t_accounts_audits(
+c_aid INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_uid INT NOT NULL ,
+c_u_old DECIMAL(10,2)  NOT NULL,
+c_u_new DECIMAL(10,2)  NOT NULL,
+c_amount DECIMAL(10,2) NOT NULL,
+c_status VARCHAR(50) NOT NULL
+);
+
+DROP TABLE t_accounts_audits;
+
+
+CREATE OR REPLACE FUNCTION log_audits()
+RETURNS TRIGGER
+LANGUAGE plpgsql
+AS $$
+BEGIN
+	IF NEW.c_balance <> OLD.c_balance THEN
+		IF NEW.c_balance > OLD.c_balance THEN
+			
+			INSERT INTO t_accounts_audits(c_uid,c_u_old,c_u_new,c_amount,c_status) VALUES(NEW.c_cid,OLD.c_balance,NEW.c_balance,NEW.c_balance-OLD.c_balance,'CREDIT');
+		END IF;
+		IF NEW.c_balance < OLD.c_balance THEN
+			
+			INSERT INTO t_accounts_audits(c_uid,c_u_old,c_u_new,c_amount,c_status) VALUES(NEW.c_cid,OLD.c_balance,NEW.c_balance,OLD.c_balance-NEW.c_balance,'DEBIT');
+		END IF;
+	END IF;
+
+	RETURN NEW;
+	
+END;$$
+
+
+
+
+
+
+CREATE OR REPLACE TRIGGER audit
+AFTER UPDATE
+ON t_accounts
+FOR EACH ROW
+EXECUTE FUNCTION log_audits(); 
+
+
+
+select * from t_accounts_audits;
+
+create table t1(like t_accounts);
+insert into t1 
+
+select * from t_accounts;
+create table t2 AS  select * from t_accounts;
+
+
+
+CREATE TABLE t_test(
+c_did INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_name VARCHAR(50) NOT NULL,
+c_address VARCHAR(100),
+c_city VARCHAR(50)
+);
+
+INSERT INTO t_test(c_name,c_address,c_city)VALUES
+('A','abc','surat'),
+('B',NULL,'bardoli'),
+('C','def',NULL),
+('D','ghi','surat'),
+('E','jkl','bardoli'),
+('F','mno','surat');
+
+
+
+CREATE OR REPLACE VIEW view1
+AS SELECT c_did,c_name FROM t_test;
+
+INSERT INTO view1(c_name) VALUES('F');
+
+
+CREATE OR REPLACE VIEW view2
+AS SELECT COUNT(*) AS "NO OF PERSON" FROM t_test GROUP BY c_city;
+
+SELECT *FROM view2;
+
+
+
+SELECT c_deptid, c_city, SUM(c_salary)
+FROM t_emp
+GROUP BY ROLLUP (c_city,c_deptid) ORDER BY 2,1;
+
+SELECT c_deptid, c_city, SUM(c_salary)
+FROM t_emp
+GROUP BY CUBE (c_city,c_deptid) ORDER BY 2,1;
+
+SELECT c_deptid, c_city, SUM(c_salary)
+FROM t_emp
+GROUP BY GROUPING SETS (
+(c_city,c_deptid),
+(c_deptid),
+(c_city)) ;
+
+
+SELECT c_empid,c_name,c_city,c_salary, RANK() OVER( ORDER BY c_salary) RANK FROM t_emp;
+
+SELECT c_empid,c_name,c_city,c_salary, ROW_NUMBER() OVER( PARTITION BY c_city ORDER BY c_salary DESC) AS ROW_NUM FROM t_emp;
+
+SELECT c_empid,c_name,c_city,c_salary, ROW_NUMBER() OVER(  ORDER BY c_salary DESC) AS ROW_NUM FROM t_emp;
+
+
+CREATE TABLE test(
+c_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_email VARCHAR(50) NOT NULL,
+c_pwd VARCHAR(100) NOT NULL);
+
+insert into test(c_email,c_pwd) VALUES
+('ABC@gmail.com','ABC'),
+('DEF@gmail.com','DEF'),
+('GHI@gmail.com','GHI'),
+('JKL@gmail.com','JKL');
+
+
+SELECT *FROM test WHERE c_email='ABC@gmail.com' AND c_pwd='ABC';
+
+SELECT *FROM test WHERE c_email='ABC@gmail.com' AND c_pwd='' OR '1'='1';
+
+PREPARE t_user(VARCHAR,VARCHAR) AS SELECT *FROM test u WHERE u.c_email=$1 AND u.c_pwd=$2;
+
+EXECUTE t_user('ABC@gmail.com','ABC');
+
+EXECUTE t_user('ABC@gmail.com','' OR '1'='1');
+
+
+CREATE TABLE order_details(
+order_id SERIAL,
+item_id INT NOT NULL,
+item_text VARCHAR NOT NULL,
+price DEC(10,2) NOT NULL,
+PRIMARY KEY(order_id, item_id)
+);
+
+CREATE SEQUENCE item_id
+START 1
+INCREMENT 1
+MINVALUE 1
+OWNED BY order_details.item_id;
+
+
+INSERT INTO 
+order_details(order_id, item_id, item_text, price)
+VALUES
+(100, nextval('item_id'),'DVD Player',100),
+(100, nextval('item_id'),'Android TV',550),
+(100, nextval('item_id'),'Speaker',250);
+
+	
+ALTER SEQUENCE item_id RESTART WITH 10;
+
+SELECT *FROM order_details;
+
+
+SELECT CAST('200' AS INTEGER)+'10','01-OCT-2015'::DATE+1;
+
+SELECT '15 minute' :: interval,
+'2 hour' :: interval,
+'1 day' :: interval,
+'2 week' :: interval,
+'3 month'::interval;
+
+CREATE TABLE student(
+c_id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+c_name VARCHAR(50) NOT NULL,
+c_s1 INT NOT NULL,
+c_s2 INT NOT NULL,
+c_s3 INT NOT NULL);
+
+INSERT INTO student(c_name,c_s1,c_s2,c_s3) VALUES
+('manan',90,90,90),
+('varun',80,80,80),
+('man',70,70,70);
+
+drop table student;
+
+
+SELECT c_name,c_s1,c_s2,c_s3,
+c_s1+c_s2+c_s3 AS "Total Marks",
+(c_s1+c_s2+c_s3)/3 AS "PERCENTAGE",
+CASE
+	WHEN (c_s1+c_s2+c_s3)/3 >=90 THEN
+		CAST ('DISTINCTION' AS TEXT)
+	
+	WHEN (c_s1+c_s2+c_s3)/3 >=80  AND (c_s1+c_s2+c_s3)/3 <90 THEN
+		CAST ('FIRST' AS TEXT)
+	
+	WHEN (c_s1+c_s2+c_s3)/3 >=70 AND (c_s1+c_s2+c_s3)/3 <80 THEN
+		CAST ('SECOND' AS TEXT)
+	
+	WHEN (c_s1+c_s2+c_s3)/3 >=60 AND (c_s1+c_s2+c_s3)/3 <70 THEN
+		CAST ('THIRD' AS TEXT)
+	WHEN (c_s1+c_s2+c_s3)/3 <60 THEN
+		CAST ('FOURTH' AS TEXT)
+	
+	END
+
+FROM student
+
+
+with cte1 AS(
+SELECT c_name,c_s1,c_s2,c_s3,
+c_s1+c_s2+c_s3 AS "Total Marks",
+(c_s1+c_s2+c_s3)/3 AS "PERCENTAGE",
+CASE
+	WHEN (c_s1+c_s2+c_s3)/3 >=90 THEN
+		CAST ('DISTINCTION' AS TEXT)
+	
+	WHEN (c_s1+c_s2+c_s3)/3 >=80  AND (c_s1+c_s2+c_s3)/3 <90 THEN
+		CAST ('FIRST' AS TEXT)
+	
+	WHEN (c_s1+c_s2+c_s3)/3 >=70 AND (c_s1+c_s2+c_s3)/3 <80 THEN
+		CAST ('SECOND' AS TEXT)
+	
+	WHEN (c_s1+c_s2+c_s3)/3 >=60 AND (c_s1+c_s2+c_s3)/3 <70 THEN
+		CAST ('THIRD' AS TEXT)
+	WHEN (c_s1+c_s2+c_s3)/3 <60 THEN
+		CAST ('FOURTH' AS TEXT)
+	
+	END AS CLASS
+
+FROM student
+
+)SELECT*FROM cte1 WHERE CLASS='DISTINCTION'; 
+
+
+with cte2 AS(
+SELECT c_empid,c_name,c_city,c_salary, 
+RANK() OVER( ORDER BY c_salary) RANK FROM t_emp
+)SELECT*FROM cte2 WHERE RANK IN (4,5); 
+
+with cte3 AS(
+SELECT c_empid,c_deptid,c_name,c_city,c_salary, ROW_NUMBER() OVER( PARTITION BY c_deptid ORDER BY c_name) AS ROW_NUM FROM t_emp
+)SELECT*FROM cte3 WHERE ROW_NUM < 3; 

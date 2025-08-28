@@ -131,6 +131,7 @@ SELECT DISTINCT(c_category) FROM t_products;
 
 --18
 SELECT c_cid , SUM(c_totalamount) FROM t_orders GROUP BY c_cid HAVING SUM(c_totalamount)>4000; 
+
 --19
 
 SELECT p.c_category , COUNT(o.c_pid)
@@ -162,7 +163,7 @@ SELECT * FROM t_orders ORDER BY c_orderdate ASC , c_totalamount ASC;
 SELECT * FROM t_products ORDER BY  c_price DESC LIMIT 3;
 
 --25
-SELECT DISTINCT ON(c_cid)* FROM t_orders  ORDER BY c_cid,c_orderdate DESC;
+SELECT c_cid,MAX(c_orderdate)  FROM t_orders GROUP BY c_cid  ORDER BY MAX(c_orderdate) DESC;
 
 --26
 SELECT c_name FROM t_customers WHERE c_cid IN (SELECT c_cid FROM t_orders)
@@ -200,15 +201,17 @@ JOIN t_products p ON od.c_pid = p.c_pid;
 
 SELECT c_name FROM t_customers
 WHERE c_cid IN (SELECT c_cid FROM t_orders 
-where c_totalamount <(SELECT AVG(c_totalamount) FROM t_orders));
+WHERE c_totalamount <(SELECT AVG(c_totalamount) FROM t_orders));
 
 --31
 
 
 SELECT c.c_name, SUM(od.c_quantity) AS total_quantity
 FROM t_customers c
-JOIN t_orders o ON c.c_cid = o.c_cid
-JOIN t_orderdetail od ON o.c_oid = od.c_oid
+JOIN t_orders o 
+ON c.c_cid = o.c_cid
+JOIN t_orderdetail od 
+ON o.c_oid = od.c_oid
 GROUP BY c.c_name;
 
 --32
