@@ -14,10 +14,10 @@ WITH city_counts AS (
     FROM t_emp
     GROUP BY c_city
 )
-SELECT e.*, cc.city_emp_count
+SELECT e.*, cc.city_emp
 FROM t_emp e
 JOIN city_counts cc ON e.c_city = cc.c_city
-ORDER BY cc.city_emp_count DESC;
+ORDER BY cc.city_emp DESC;
 
 --4
 WITH desig_salary AS (
@@ -53,6 +53,7 @@ GROUP BY ROLLUP (c_city);
 SELECT c_deptid, c_city, SUM(c_salary) AS total_salary
 FROM t_emp
 GROUP BY CUBE (c_deptid, c_city);
+
 
 --9
 SELECT c_desig, c_city, COUNT(*) AS emp_count

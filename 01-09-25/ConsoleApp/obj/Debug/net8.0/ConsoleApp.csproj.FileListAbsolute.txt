@@ -1,0 +1,15 @@
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\bin\Debug\net8.0\ConsoleApp.exe
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\bin\Debug\net8.0\ConsoleApp.deps.json
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\bin\Debug\net8.0\ConsoleApp.runtimeconfig.json
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\bin\Debug\net8.0\ConsoleApp.dll
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\bin\Debug\net8.0\ConsoleApp.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfoInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.AssemblyInfo.cs
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.sourcelink.json
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.dll
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\refint\ConsoleApp.dll
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ConsoleApp.genruntimeconfig.cache
+C:\Users\asus\OneDrive\Documents\casepoint\01-09-25\ConsoleApp\obj\Debug\net8.0\ref\ConsoleApp.dll
