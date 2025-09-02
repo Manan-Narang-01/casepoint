@@ -34,14 +34,14 @@ namespace csharp
             // Assignment1.CalenderTest();
             // Attendance.Attendancemain();
             // Student.StudentMain();
-            Student2 s1 = new Student2("A", 18, "A");
+            Student2 s1 = new Student2("AB", 18, "A");
             s1.Display();
 
-            Student2 s2 = new Student2("B", 19, "B");
-            s1.Display();
+            Student2 s2 = new Student2("ABC", 19, "B");
+            s2.Display();
 
-            Student2 s3 = new Student2("C", 20, "C");
-            s1.Display();
+            Student2 s3 = new Student2("ABCD", 20, "D");
+            s3.Display();
 
         }
     }
