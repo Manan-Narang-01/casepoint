@@ -1,0 +1,15 @@
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.AssemblyInfoInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.AssemblyInfo.cs
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.sourcelink.json
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\bin\Debug\net8.0\02-09-25.exe
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\bin\Debug\net8.0\02-09-25.deps.json
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\bin\Debug\net8.0\02-09-25.runtimeconfig.json
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\bin\Debug\net8.0\02-09-25.dll
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\bin\Debug\net8.0\02-09-25.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.dll
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\refint\02-09-25.dll
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\02-09-25.genruntimeconfig.cache
+C:\Users\asus\OneDrive\Documents\casepoint\02-09-25\obj\Debug\net8.0\ref\02-09-25.dll
