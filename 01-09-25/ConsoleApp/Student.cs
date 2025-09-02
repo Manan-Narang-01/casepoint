@@ -17,14 +17,14 @@ public class Student
         Console.Write("Enter initial score: ");
         int score = int.Parse(Console.ReadLine());
 
-        DisplayStudent(name, grade);
+        Display(name, grade);
         Console.WriteLine($"Initial Score: {score}");
 
         ApplyBonus(grade, ref score);
-        Console.WriteLine($"Updated Score with Bonus: {score}");
+        Console.WriteLine($"Updated Score : {score}");
     }
 
-    public static void DisplayStudent(string name, string grade = "B")
+    public static void Display(string name, string grade = "B")
     {
         Console.WriteLine($"Student: {name}\nGrade: {grade}");
     }
