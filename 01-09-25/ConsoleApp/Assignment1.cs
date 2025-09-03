@@ -42,12 +42,6 @@ namespace ConsoleApp
                     {
                         continue;
                     }
-
-                    if (curday > dim)
-                    {
-                        break;
-                    }
-
                     Console.Write($"{curday,3} ");
 
                     curday++;
