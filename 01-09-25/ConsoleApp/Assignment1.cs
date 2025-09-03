@@ -27,13 +27,13 @@ namespace ConsoleApp
 
             int curday = 1;
 
-            // Print initial spacing for the first week
+            
             for (int i = 0; i < st; i++)
             {
                 Console.Write("    ");
             }
 
-            // Print the days
+            
             for (int week = 0; week < 6; week++)
             {
                 for (int day = 0; day < 7; day++)
