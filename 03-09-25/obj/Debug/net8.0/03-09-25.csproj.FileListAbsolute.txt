@@ -13,3 +13,8 @@ C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\obj\Debug\net8.0\refint\03-0
 C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\obj\Debug\net8.0\03-09-25.pdb
 C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\obj\Debug\net8.0\03-09-25.genruntimeconfig.cache
 C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\obj\Debug\net8.0\ref\03-09-25.dll
+C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\obj\Debug\net8.0\03-09-25.csproj.AssemblyReference.cache
+C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\bin\Debug\net8.0\Npgsql.dll
+C:\Users\asus\OneDrive\Documents\casepoint\03-09-25\obj\Debug\net8.0\03-09-25.csproj.Up2Date
