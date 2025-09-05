@@ -27,7 +27,7 @@ namespace _03_09_25
             Console.WriteLine("Start the kettle");
             Console.WriteLine("Waiting for the kettle");
 
-            await Task.Delay(2000);
+            await Task.Delay(3000);
 
             Console.WriteLine("Kettle finished boiling");
             return "water";
