@@ -1,8 +1,8 @@
-﻿// namespace _04_09_25;
+﻿namespace _04_09_25;
 
-// public enum EmployeeType
-// {
-//     Manager,
-//     Developer,
-//     Intern
-// }
+public enum EmployeeType
+{
+    Manager,
+    Developer,
+    Intern
+}
