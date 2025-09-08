@@ -1,0 +1,15 @@
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\bin\Debug\net8.0-windows\formapp1.exe
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\bin\Debug\net8.0-windows\formapp1.deps.json
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\bin\Debug\net8.0-windows\formapp1.runtimeconfig.json
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\bin\Debug\net8.0-windows\formapp1.dll
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\bin\Debug\net8.0-windows\formapp1.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.AssemblyInfoInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.AssemblyInfo.cs
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.sourcelink.json
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.dll
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\refint\formapp1.dll
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\formapp1.genruntimeconfig.cache
+C:\Users\asus\OneDrive\Documents\casepoint\08-09-25\formapp1\obj\Debug\net8.0-windows\ref\formapp1.dll
