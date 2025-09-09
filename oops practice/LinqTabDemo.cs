@@ -5,7 +5,7 @@ public class LinqTabDemo
     public static void LinqdatabaseMain()
         {
             using (NpgsqlConnection con = new NpgsqlConnection(
-                "Server=localhost;Port=5432;Database=intern015;User Id=postgres;Password=root;"))
+                "Server=localhost;Port=5432;Database=intern093;User Id=postgres;Password=root;"))
             {
                 
 

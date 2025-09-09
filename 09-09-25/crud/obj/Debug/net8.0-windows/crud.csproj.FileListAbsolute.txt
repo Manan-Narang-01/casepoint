@@ -1,0 +1,5 @@
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\crud\obj\Debug\net8.0-windows\crud.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\crud\obj\Debug\net8.0-windows\crud.AssemblyInfoInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\crud\obj\Debug\net8.0-windows\crud.AssemblyInfo.cs
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\crud\obj\Debug\net8.0-windows\crud.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\crud\obj\Debug\net8.0-windows\crud.sourcelink.json

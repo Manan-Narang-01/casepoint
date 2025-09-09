@@ -1,0 +1,15 @@
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.AssemblyInfoInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.AssemblyInfo.cs
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.csproj.CoreCompileInputs.cache
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.sourcelink.json
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\bin\Debug\net8.0-windows\apic#.exe
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\bin\Debug\net8.0-windows\apic#.deps.json
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\bin\Debug\net8.0-windows\apic#.runtimeconfig.json
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\bin\Debug\net8.0-windows\apic#.dll
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\bin\Debug\net8.0-windows\apic#.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.dll
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\refint\apic#.dll
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.pdb
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\apic#.genruntimeconfig.cache
+C:\Users\asus\OneDrive\Documents\casepoint\09-09-25\apic#\obj\Debug\net8.0-windows\ref\apic#.dll
